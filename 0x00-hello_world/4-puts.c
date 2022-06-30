@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 /**
 *main - Starting point
 *Return: Always 0     
