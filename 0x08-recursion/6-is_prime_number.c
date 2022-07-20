@@ -1,18 +1,29 @@
 #include "main.h"
 
 /**
-* is_divisible - check if num is divisible
-* @num: the number to be checked
-* @div: the result of division
-* Return: 1 if num is divisible or 0 if numis not divisible
+* prime function - checks to see if number is divisible
+* @a:int
+* @b:int
+* Return:int
 */
-int is_divisible(int num, int div)
+int prime(int a, int b)
 {
-if (num % div == 0)
+if (b < 2 || b % a == 0)
 return (0);
-
-if (div == num / 2)
+else if (a > b / 2)
 return (1);
+else
+return (prime(a + 1, b));
+}
 
-return (is_divisible(num, div + 1));
+/**
+* is_prime_number - states if number is prime
+* @n:int
+* Return:int
+*/
+int is_prime_number(int n)
+{
+if (n == 2)
+return (1);
+return (prime(2, n));
 }
