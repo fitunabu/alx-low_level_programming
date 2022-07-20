@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* prime function - checks to see if number is divisible
+* prime - checks to see if number is divisible
 * @a:int
 * @b:int
 * Return:int
