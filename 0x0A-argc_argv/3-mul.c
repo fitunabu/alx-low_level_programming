@@ -3,14 +3,13 @@
 
 /**
 * main - A program that multiplies two numbers
-* @argc: The arguments' counter
-* @argv: The arguments' values
+* @argc: The argument count
+* @argv: The argument values
 * Return: Always 0 (Success)
 */
 int main(int argc, char **argv)
 {
 int num1, num2, result;
-
 if (argc != 3)
 {
 printf("Error\n");
