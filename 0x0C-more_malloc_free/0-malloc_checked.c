@@ -1,17 +1,17 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
 /**
-* malloc_checked - allocates memory using malloc
-* @b: size to be allocated
-* Return: pointer to allocated memory or exit with 98
+*malloc_checked - allocates memory using malloc
+*@b: size to malloc
+*Return: pointer to allocated memory
 */
 
 void *malloc_checked(unsigned int b)
 {
-void *p;
-p = malloc(b);
-if (p == NULL)
+void *ptr;
+ptr = malloc(b);
+if (ptr == NULL)
 exit(98);
-return (p);
+return (ptr);
 }
