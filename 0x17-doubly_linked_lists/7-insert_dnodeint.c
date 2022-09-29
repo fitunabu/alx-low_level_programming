@@ -1,53 +1,52 @@
 #include "lists.h"
+#include <stdlib.h>
 
 /**
- * insert_dnodeint_at_index - inserts a new node at given index in the list
- * @head: pointer to head of the list
- * @idx: index to add at, starting from 0
- * @n: value of new node
- * Return: new node or null
- **/
-dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int idx, int n)
+ * insert_dnodeint_at_index - A function that inserts a node at
+ * position in a list.
+ * @h: The double pointer to the head.
+ * @idx: The index to insert new node at.
+ * @n: The data to add to new node.
+ * Return: A pointer to new element, or NULL on failure.
+ */
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int count;
-	dlistint_t *tmp, *new, *tmp_prev;
+	dlistint_t *new_node = NULL, *temp = NULL;
+	unsigned int i = 0;
 
-	if (head == NULL && idx > 0)
-	return (NULL);
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
+	new_node = malloc(sizeof(dlistint_t));
+	if (!new_node)
 		return (NULL);
-	new->n = n, new->prev = new->next = NULL;
-
-	if (idx == 0)
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	new_node->n = n;
+	if (!h || !(*h))
+		*h = new_node;
+	else
 	{
-		if (*head)
-	{
-		new->next = *head;
-		(*head)->prev = new, *head = new;
-	}
+		temp = *h;
+		while (idx != i++ && temp->next)
+			temp = temp->next;
+		if (temp->next)
+			new_node->prev = temp->prev;
 		else
-			*head = new;
-		return (new);
-	}
-	count = 1, tmp = (*head)->next;
-	while (tmp)
-	{
-		if (idx == count)
+			new_node->prev = temp;
+		if (idx == i)
+			temp->next = new_node, new_node->prev = temp;
+		else if (idx == i - 1)
 		{
-			tmp->prev->next = new, new->prev = tmp->prev;
-			new->next = tmp, tmp->prev = new;
-			return (new);
+			if (temp->prev)
+				temp->prev->next = new_node;
+			else
+				*h = new_node;
+			temp->prev = new_node;
+			new_node->next = temp;
 		}
-		count++;
-		tmp_prev = tmp;
-		tmp = tmp->next;
+		else
+		{
+			free(new_node);
+			return (NULL);
+		}
 	}
-	if (tmp == NULL && count == idx)
-	{
-		tmp_prev->next = new, new->prev = tmp_prev;
-		return (new);
-	}
-	free(new);
-	return (NULL);
+	return (new_node);
 }
