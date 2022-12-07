@@ -1,4 +1,4 @@
-# make Holberton executable with variables CC, SRC
+# make school executable with variables CC, SRC
 
 CC = gcc
 SRC = main.c school.c
